@@ -1,27 +1,34 @@
-# Tictactoe
+# Sleep-Team
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+# Tic-Tac-Toe Site
+### Contributors: Chuyang, Demetrius , Devin, James, Devin 
 
-## Development server
+A Tic-Tac-Toe site to play the game with a bot or a person.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### Features:
+- [] Play Tic-Tac-Toe
+- [] VS. A.I. (Easy)
+- [] VS. Player
+- [] Login and logout
+- [] Keep Track of Wins
+- [] VS. A.I. (Hard)
 
-## Code scaffolding
+#### Backend To Do:
+- [] Create User Model (Simon)
+    - ID, Username,  Password, Wins, Losses
+- [] Create Board Model (Demetrius)
+    - 2d Array (3x3) filled with undefined x's or o's, state of game (Finished or Unfinished), Winner ( x's or o's or undefined)
+- [] Controllers and Services (Simon and Demetrius)
+    -Basic stuff. Endpoint to call board model vs ai and seperate one for vs player, endpoint to call user model.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### Frontend To Do:
+- [] TicTacToe NavBar (Devin)
+- [] Create Basic Layout to display Tic-Tac-Toe Board (Chuyang)
+- [] Create the ability to click on board and siaply x's or o's
+- [] The ability to pick x's  or o's
+- [] Display Winner once game is done
+- [] Make calls to backend for state of game
+- [] Login and logout
+- [] Login Screen (James)
+- [] Make calls to backend for user
+- [] display amount of wins somewhere
