@@ -16,7 +16,7 @@ A Tic-Tac-Toe site to play the game with a bot or a person.
 #### Backend To Do:
 - [] Create User Model
     - Username,  Password, Wins, Losses
-- [ ] Create Board Model
+- [] Create Board Model
     - 2d Array (3x3) filled with undefined x's or o's, state of game (Finished or Unfinished), Winner ( x's or o's or undefined)
 - [] Controllers and Services
     -Basic stuff. Endpoint to call board model vs ai and seperate one for vs player, endpoint to call user model.
