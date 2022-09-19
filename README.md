@@ -29,5 +29,6 @@ A Tic-Tac-Toe site to play the game with a bot or a person.
 - [] Display Winner once game is done
 - [] Make calls to backend for state of game
 - [] Login and logout
+- [] Login Screen (James)
 - [] Make calls to backend for user
 - [] display amount of wins somewhere
