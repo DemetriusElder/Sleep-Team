@@ -3,6 +3,11 @@
     display: flex;
     justify-content: space-between;
 }
+.left-container {
+    display: flex;
+    justify-content: space-between;
+    width: 33%;
+}
 .right-container {
     display: flex;
     justify-content: space-between;
