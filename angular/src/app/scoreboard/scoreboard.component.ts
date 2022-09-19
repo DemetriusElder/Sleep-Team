@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scoreboard.component.css']
 })
 export class ScoreboardComponent implements OnInit {
+  player1score: number = 0;
+  player2score: number = 0;
 
   constructor() { }
 
