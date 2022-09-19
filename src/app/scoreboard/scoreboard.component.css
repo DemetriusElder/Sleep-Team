@@ -1,0 +1,10 @@
+.scoreboard-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.right-container {
+    display: flex;
+    justify-content: space-between;
+    width: 33%;
+}
