@@ -1,16 +1,20 @@
-package service;
+package SleepTeam.TicTacToe.Service;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import model.Board;
-import repo.BoardRepo;
+import SleepTeam.TicTacToe.Model.Board;
+import SleepTeam.TicTacToe.Repo.BoardRepo;
+
+
 
 @Service
 public class BoardService {	
 	
-	private final BoardRepo boardRepo;
+private final BoardRepo boardRepo;
 	
+	@Autowired
 	public BoardService(BoardRepo boardRepo) {
 		this.boardRepo = boardRepo;
 	}
@@ -19,8 +23,8 @@ public class BoardService {
 		return boardRepo.findById(id);
 	}
 	
-	public Board changeBoardStateAI(char XorO) {
-		Board testBoard = this.findBoard(1);
+	public Board changeBoardStateAI(char XorO, Board board) {
+		Board testBoard = board;
 		char[][] proxyArray = testBoard.getBoardstate();
 		testBoard = this.checkWinner(testBoard);
 		Random rand = new Random();
@@ -39,11 +43,12 @@ public class BoardService {
 		    	  
 		      }
 		}
-		return boardRepo.save(testBoard);
+		System.out.println(testBoard);
+		return testBoard;
 	}
 	
-	public Board changeBoardStateHuman(char XorO, int row, int column) {
-		Board testBoard = this.findBoard(1);
+	public Board changeBoardStateHuman(char XorO, int row, int column, Board board) {
+		Board testBoard = board;
 		char[][] proxyArray = testBoard.getBoardstate();
 		testBoard = this.checkWinner(testBoard);
 		proxyArray[row][column] = XorO;
@@ -77,6 +82,7 @@ public class BoardService {
 			testBoard.setFinished(true);
 			testBoard.setWinner(proxyArray[0][2]);
 		}
+		System.out.println(testBoard);
 		return testBoard;
 		
 	}

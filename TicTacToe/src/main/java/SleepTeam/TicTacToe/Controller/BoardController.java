@@ -1,4 +1,4 @@
-package controller;
+package SleepTeam.TicTacToe.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Board;
-import service.BoardService;
+import SleepTeam.TicTacToe.Model.Board;
+import SleepTeam.TicTacToe.Service.BoardService;
+
 
 @RestController()
 @RequestMapping("board")
@@ -21,13 +22,18 @@ public class BoardController {
 	}
 	
 	@GetMapping("/ai")
-	public Board getBoardVsAI(@RequestParam char XorO) {
-		return boardService.changeBoardStateAI(XorO);	
+	public Board getBoardVsAI(@RequestParam char XorO, @RequestParam Board board) {
+		return boardService.changeBoardStateAI(XorO, board);	
 	}
 	
 	@GetMapping("/human")
-	public Board getBoardVsHuman(@RequestParam int row,@RequestParam int column,@RequestParam char XorO) {
-		return boardService.changeBoardStateHuman(XorO, row, column);
+	public Board getBoardVsHuman(@RequestParam int row,@RequestParam int column,@RequestParam char XorO, @RequestParam Board board) {
+		return boardService.changeBoardStateHuman(XorO, row, column, board);
+	}
+	@GetMapping()
+	public String test() {
+		System.out.println("Hello");
+		return "Hello";
 	}
 	
 

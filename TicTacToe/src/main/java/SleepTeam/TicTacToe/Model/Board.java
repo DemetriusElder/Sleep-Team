@@ -1,4 +1,4 @@
-package model;
+package SleepTeam.TicTacToe.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
