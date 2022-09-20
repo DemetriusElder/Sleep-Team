@@ -1,0 +1,66 @@
+package SleepTeam.TicTacToe.Controller;
+
+import SleepTeam.TicTacToe.Service.UserService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.server.ResponseStatusException;
+
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+//integration testing
+@WebMvcTest(UserController.class)
+@ExtendWith(SpringExtension.class)
+public class UserControllerT {
+    private MockMvc mockMvc;
+
+    @SpyBean //class testing
+    private UserController userController;
+
+    @MockBean //inject bean
+    private UserService userService;
+
+    @BeforeEach
+    public void init(){
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.standaloneSetup(userController).build(); //isolates the controller
+    }
+
+    @Test
+    public void findById_returns200Status() throws Exception{
+        //act  /assert
+        mockMvc.perform(get("/user/1")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void findById_callsUserServiceWithPathVariable() throws Exception{
+        //arrange
+        Long userId = 3L;
+        //act
+        mockMvc.perform(get("/user/" + userId)).andExpect(status().isOk());
+        //assert -verify that the mock is called
+        verify(userService).findById(userId);
+        verify(userService, times(1)).findById(3L);
+    }
+
+    //this test is uncessary .
+//    @Test
+//    public void findById_throwsNotFound_invalidId() throws Exception{
+//        Long userId = 5L;
+//        ResponseStatusException rse = new ResponseStatusException(HttpStatus.NOT_FOUND);
+//        when(userService.findById(userId)).thenThrow(rse);
+//
+//        //act
+//        mockMvc.perform(get("/user/5")).andExpect(status().isNotFound());
+//    }
+}
