@@ -1,0 +1,30 @@
+
+form {
+    margin: auto;
+    padding: 35px;
+    flex-direction: column;
+    row-gap: 0.75rem;
+    height: 400px;
+    width: 100%;
+    max-width: 416px;
+    background-color: white;
+  }
+
+  input {
+    width: 95%;
+    height: 40px;
+    padding-left: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #f8f8f8;
+    border-color: #e3e3e4;
+    margin: 3px;
+  }
+  .form-btns {
+    text-align: right;
+    margin-top: 40px;
+    margin-right: 3px;
+    align-content: space-between;
+  }
+    
+  

@@ -7,6 +7,10 @@ import { GameSettingsComponent } from './game-settings/game-settings.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 import { GameboardComponent } from './gameboard/gameboard.component';
 import { SquareComponent } from './square/square.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,16 @@ import { SquareComponent } from './square/square.component';
     GameSettingsComponent,
     ScoreboardComponent,
     GameboardComponent,
-    SquareComponent
+    SquareComponent,
+    LoginModalComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

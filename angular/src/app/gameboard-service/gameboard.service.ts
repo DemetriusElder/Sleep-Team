@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -7,8 +8,10 @@ export class GameBoardService {
   board!:string[][];
   prevPlayer!: string;
   nextPlayer!:string;
+  apiBaseUrl!: 'http://localhost:8080';
+  endgame!:boolean;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.newGame()
    }
   //start a new game at the begining or reset
@@ -17,6 +20,7 @@ export class GameBoardService {
     //later can change to let user select who(O or x) go first
     this.prevPlayer = "O";
     this.nextPlayer = "X";
+    this.endgame = false;
   } 
 
   createBoard(){
@@ -28,14 +32,42 @@ export class GameBoardService {
   switchPlayer(){
     this.prevPlayer = this.prevPlayer === "X" ? "O" : "X";
     this.nextPlayer = this.nextPlayer === "X" ? "O" : "X";
-    //todo: 1)call update board 2)send the board to backend for evaluation
+    //send the board to backend for evaluation
+    //update if wins
+    this.endgame = this.getwinner();
     return this.prevPlayer;
   }
   updateBoard(row:number,col:number,player:string){
-    console.log("Selected:(",row,",",col,")","player: ",player);
-    console.log("Board:", this.board);
+    if(player == 'O'){
+    row = this.mockMove().row;
+    col = this.mockMove().col;
+    }
     this.board[row][col] = player;
-
+    this.endgame = this.checkFull();
   }
- 
+  //todo: get win status -> endgame
+ public getwinner() : any{
+    return this.http.post('http://localhost:8080/board/checkWinner',JSON.stringify(this.board))
+  }
+  //todo:get Ai move
+  public getAiMove() : any{
+    return this.http.get(`${this.apiBaseUrl}/board?board=${this.board}`)
+  }
+  public mockMove() : any{
+    for(let i =0;i<3;i++){
+      for(let j = 0;j<3;j++){
+        if(this.board[i][j] == '')
+        return {row:i,col:j};
+      }
+    }
+  }
+  public checkFull():boolean{
+    for(let i =0;i<3;i++){
+      for(let j = 0;j<3;j++){
+        if(this.board[i][j] == '')
+        return false;
+      }
+    }
+    return true;
+  }
 }
