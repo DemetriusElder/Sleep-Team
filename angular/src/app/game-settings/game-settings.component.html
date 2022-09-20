@@ -1,2 +1,28 @@
-<h2>Player Name:</h2>
-<p>game-settings works!</p>
+<div class="body-container">
+  <form [formGroup]="settingsForm">
+    <div class="flex-container">
+      <div class="center-container">
+      </div>
+      <div class="pixelgram-title">Game Settings</div>
+    </div>
+
+    <input type="text" placeholder="playerName" id="playerName" formControlName="playerName" 
+    class="form-input"/>
+    <div class="smallfield">
+    </div>
+    <label for="difficulty">Choose a difficulty:</label>
+  <select id="difficulty" name="difficulty" formControlName="difficulty" class="menu">
+    <option value="easy">Easy</option>
+    <option value="hard">Hard</option> 
+  </select><br>
+
+  <label for="char">Choose a character:</label>
+  <select id="char" name="char" formControlName="char" class="menu">
+    <option value="X">X</option>
+    <option value="O">O</option> 
+  </select>
+    <div class="form-btns">
+      <button type="submit">Start Game</button>
+    </div>
+  </form>
+</div>

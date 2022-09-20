@@ -1,47 +1,67 @@
-.main {
-    display: flex;
-    justify-content: center;
+@import url("http://fonts.cdnfonts.com/css/billabong");
+.nav {
+  width: 100%;
+  background-color: #ffffff;
+  height: 5rem;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.09);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
 }
-.scoreboard-container {
-    width: 75%;
-    display: flex;
-    justify-content: center;
-    height: 90px;
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
 }
+
+/*left content*/
 .left-container {
-    display: flex;
-    width: 25%;
-    justify-content: flex-end;
-    font-size: 24px;
-    background: linear-gradient(
-    143deg,
-    rgba(0, 56, 89, 1) 0%,
-    rgba(0, 87, 160, 1) 25%,
-    rgba(0, 87, 160, 1) 75%,
-    rgba(0, 56, 89, 1) 100%
-  );
-    padding-right: 10px;
+  display: flex;
 }
+
+/*center content*/
 .center-container {
-    display: flex;
-    justify-content: space-between;
-    width: 50px;
-    font-size: 24px;
-    padding: 0 20px;
-    background-color:black;
-    color: white;
+  margin-right: 95px;
 }
-.right-container {
+
+.scoreboard {
     display: flex;
-    width: 25%;
-    justify-content: flex-start;
-    font-size:24px;
-    background: linear-gradient(
-        233deg,
-        rgb(107, 0, 0) 0%,
-        rgb(160, 0, 32) 25%,
-        rgb(160, 0, 0) 75%,
-        rgb(221, 12, 8) 100%
-      );
-    padding-left: 10px;
+    width: 250px;
+    justify-content: space-between;
+}
+.score {
+    display: flex;
+}
+.score p {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+/* right content*/
+.right-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+}
+.user-pic {
+  padding-top: 5px;
+  height: 1.46rem;
+  width: 1.6rem;
+}
+
+.user-pic:hover {
+  cursor: pointer;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited :focus :active {
+  color: black;
+}
+
+#right-nav-stuff {
+  float: left;
 }

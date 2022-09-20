@@ -1,17 +1,29 @@
-
-<div class="main">
-    <div class="scoreboard-container">
+<mat-toolbar class="nav">
+    <div class="content-container">
+      <a routerLink="settings" routerLinkActive="active">
         <div class="left-container">
-            <h2>Player 1</h2>
+          <img class="settings-img" src="
+          ../../assets/settings_files/148386787-setting-icon-isolated-on-white-background-setting-vector-icon-cog-settings-icon-symbol-gear.jpg"
+          height="48px" width="48px">
+      </div>
+    </a>
+    <div class="center-container">
+      <!--<a routerLink="" routerLinkActive="active">-->
+        <div class="scoreboard">
+          <p>Player 1</p>
+          <div class="score">
+            <p>{{player1score}}</p>
+            <p>{{player2score}}</p>
+          </div>
+          <p>Player 2</p>
         </div>
-
-        <div class="center-container">
-            <h2>{{player1score}}</h2>
-            <h2>{{player2score}}</h2>
-        </div>
-
-        <div class="right-container">
-            <h2>Player 2</h2>
-        </div>
+      <!--</a>-->
     </div>
-</div>
+      <div class="right-container">
+        <div class="dropdown" id="right-nav-stuff">
+          <img class="user-pic" alt="user login" src="../../../assets/user-pic.PNG"/>
+          </div>
+        </div>
+      </div>
+  </mat-toolbar>
+  
