@@ -22,12 +22,12 @@ public class BoardController {
 	}
 	
 	@GetMapping("/ai")
-	public Board getBoardVsAI(@RequestParam char XorO, @RequestParam Board board) {
+	public Board getBoardVsAI(@RequestParam String XorO, @RequestParam String[][] board) {
 		return boardService.changeBoardStateAI(XorO, board);	
 	}
 	
 	@GetMapping("/human")
-	public Board getBoardVsHuman(@RequestParam int row,@RequestParam int column,@RequestParam char XorO, @RequestParam Board board) {
+	public Board getBoardVsHuman(@RequestParam int row,@RequestParam int column,@RequestParam String XorO, @RequestParam String[][] board) {
 		return boardService.changeBoardStateHuman(XorO, row, column, board);
 	}
 	@GetMapping()

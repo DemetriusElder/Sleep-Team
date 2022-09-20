@@ -23,16 +23,17 @@ private final BoardRepo boardRepo;
 		return boardRepo.findById(id);
 	}
 	
-	public Board changeBoardStateAI(char XorO, Board board) {
-		Board testBoard = board;
-		char[][] proxyArray = testBoard.getBoardstate();
+	public Board changeBoardStateAI(String XorO, String[][] board) {
+		Board testBoard = new Board(false, "");
+		testBoard.setBoardstate(board);
+		String[][] proxyArray = board;
 		testBoard = this.checkWinner(testBoard);
 		Random rand = new Random();
 		if (testBoard.isFinished() == false) {
 		      int randomRow = rand.nextInt(3);
 		      int randomColumn = rand.nextInt(3);
-		      while(proxyArray[randomRow][randomColumn] != '\0') {
-		    	  if(proxyArray[randomRow][randomColumn] == '\0')
+		      while(proxyArray[randomRow][randomColumn] != "X" && proxyArray[randomRow][randomColumn] != "O") {
+		    	  if(proxyArray[randomRow][randomColumn] == "X" && proxyArray[randomRow][randomColumn] == "O")
 		    		  proxyArray[randomRow][randomColumn] = XorO;
 		    	  else
 		    	  {
@@ -47,18 +48,19 @@ private final BoardRepo boardRepo;
 		return testBoard;
 	}
 	
-	public Board changeBoardStateHuman(char XorO, int row, int column, Board board) {
-		Board testBoard = board;
-		char[][] proxyArray = testBoard.getBoardstate();
+	public Board changeBoardStateHuman(String XorO, int row, int column, String[][] board) {
+		Board testBoard = new Board(false, "");
+		testBoard.setBoardstate(board);
+		String[][] proxyArray = board;
 		testBoard = this.checkWinner(testBoard);
 		proxyArray[row][column] = XorO;
 		testBoard.setBoardstate(proxyArray);
-		return boardRepo.save(testBoard);
+		return testBoard;
 	}
 	
 	public Board checkWinner(Board board) {
 		Board testBoard = this.findBoard(1);
-		char[][] proxyArray = testBoard.getBoardstate();
+		String[][] proxyArray = testBoard.getBoardstate();
 		//checks left to right
 		for(int i = 0; i <= 2; i++){
 			if (proxyArray[i][0] == proxyArray[i][1] && proxyArray[i][1] == proxyArray[i][2]) {
