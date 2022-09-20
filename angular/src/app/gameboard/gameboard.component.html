@@ -1,0 +1,15 @@
+<h1 class="header"> {{gameBoardService.nextPlayer}}'s Turn  </h1>
+      <section>
+      <div  class="flex-container" *ngFor="let row of gameBoardService.board;let i = index;"> 
+        <div  *ngFor="let square of row; let j = index;">
+        <app-square [square]="square" [row] = "i" [col] = "j"> </app-square>
+        </div>
+      </div>    
+</section>  
+<button class="normal-btn" (click) = "reset()" >  RESET </button>
+<!-- what you see in the in html
+['0,0', '1,0', '2,0']
+['0,1', '1,1', '2,1']
+['0,2', '1,2', '2,2']
+-->
+<!-- class="square-container" -->

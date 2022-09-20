@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameSettingsComponent } from './game-settings/game-settings.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { GameboardComponent } from './gameboard/gameboard.component';
+import { SquareComponent } from './square/square.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameSettingsComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    GameboardComponent,
+    SquareComponent
   ],
   imports: [
     BrowserModule,

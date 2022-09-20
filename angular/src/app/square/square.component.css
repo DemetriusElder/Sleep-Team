@@ -1,0 +1,30 @@
+p { 
+    display: inline;
+    margin: 0px;
+    font-size:8rem;
+    display: inline;
+    overflow: hidden;
+    color: rgb(7, 167, 132);
+  }
+.game-square { 
+    height: 180px;
+    width: 180px;
+    text-align: center;
+    line-height: 0.85;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color:lightblue;
+    box-shadow: 5px 10px  lightcoral;
+    transition: color .2s;
+  }
+  .game-square:hover{
+    background-color:lightcoral ;
+  }
+  .noClick {
+    pointer-events: none;
+  }
+  .changecolor{
+    color: orange;
+  }
