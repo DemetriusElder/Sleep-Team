@@ -1,0 +1,53 @@
+<div class="modal-header">
+	<h4 class="modal-title">Login</h4>
+	<button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+	<div class="card lesson-border">
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">		
+			<input
+			  type="text"
+			  placeholder="Username..."
+			  id="username"
+			  formControlName="username"
+			  class="form-input"
+			/>
+			<div class="smallfield">
+			  <!-- <small
+				*ngIf="(loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['required']) || ((loginBtnIsPressed == true && loginForm.get('username')?.errors?.['required']))"
+				>* Username is required</small
+			  > -->
+			</div>
+		
+			<input
+			  type="password"
+			  placeholder="Password..."
+			  id="username"
+			  formControlName="password"
+			  class="form-input"
+			/>
+			<div class="smallfield">
+			  <!-- <small
+				*ngIf="(loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']) || (loginBtnIsPressed == true && loginForm.get('password')?.errors?.['required'])"
+				>* Password is required</small
+			  > -->
+			</div>
+		
+			<!-- <div class="smallfield">
+			  <small *ngIf="invalidCredentials"
+				>* Username or password is incorrect</small
+			  >
+			</div> -->
+			<div class="form-btns">
+		
+			  <!-- <a routerLink="/register" routerLinkActive="active" class="register"
+				>Register</a
+			  > -->
+			  <button type="submit">Login</button>
+			</div>
+		  </form>
+		
+	</div>
+</div>
