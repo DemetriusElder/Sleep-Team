@@ -25,4 +25,14 @@ public class UserService {
 	public User findById(long userId) {
 		return userRepo.findById(userId);
 	}
+
+	public User updateWinPlusOne(String username) {
+		userRepo.updateWinPlusOne(username);
+		return userRepo.findByUsername(username);
+	}
+
+	public User updateLossPlusOne(String username) {
+		userRepo.updateLossPlusOne(username);
+		return userRepo.findByUsername(username);
+	}
 }

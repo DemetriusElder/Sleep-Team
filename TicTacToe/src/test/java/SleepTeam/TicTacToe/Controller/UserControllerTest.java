@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.isA;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
@@ -83,5 +85,50 @@ public class UserControllerTest {
         User result = userController.findByUsername(testUser);
 
         assertEquals(expectedUser,result);
+    }
+
+    @Test
+    public void updateWinPlusOne_returnNotNull(){
+        String testUser = "test";
+        when(userService.updateWinPlusOne("test")).thenReturn(new User());
+        assertNotNull(userController.updateWinPlusOne(testUser));
+    }
+
+    @Test
+    public void updateWinPlusOne_returnUser(){
+        String testUser = "test";
+        User expectedUser = new User("test", "test", 0, 0);
+        when(userService.updateWinPlusOne("test")).thenReturn(expectedUser);
+        User result = userController.updateWinPlusOne(testUser);
+        assertThat(result, isA(User.class));
+    }
+
+    @Test
+    public void updateWinPlusOne_callsServiceByMethod(){
+        String testUser = "test";
+        userController.updateWinPlusOne(testUser);
+        verify(userService).updateWinPlusOne(testUser);
+    }
+
+    @Test
+    public void updateLossPlusOne_ReturnNotNull(){
+        String username = "test";
+        when(userService.updateLossPlusOne("test")).thenReturn(new User());
+        assertNotNull(userController.updateLossPlusOne(username));
+    }
+    @Test
+    public void updateLossPlusOne_ReturnUser(){
+        String username = "test";
+        when(userService.updateLossPlusOne("test")).thenReturn(new User());
+        User result = userController.updateLossPlusOne(username);
+        assertThat(result, isA(User.class));
+    }
+
+    @Test
+    public void updateLossPlusOne_ServiceMethodCalled(){
+        String userTest = "test";
+        //when(userService.updateLossPlusOne("test")).thenReturn(new User());
+        userController.updateLossPlusOne(userTest);
+        verify(userService).updateLossPlusOne(userTest);
     }
 }

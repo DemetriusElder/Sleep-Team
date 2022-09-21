@@ -65,7 +65,29 @@ public class UserControllerT {
         verify(userService).findByUsername(userName);
     }
 
+    @Test
+    public void updateWinPlusOne_returns200Status() throws Exception{
+        mockMvc.perform(get("/users/updateWinPlusOne/test")).andExpect(status().isOk());
+    }
 
+    @Test
+    public void updateWinPlusOne_callsUserServiceWithPathVariable() throws Exception{
+        String testUser = "test";
+        mockMvc.perform(get("/users/updateWinPlusOne/"+testUser)).andExpect(status().isOk());
+        verify(userService).updateWinPlusOne(testUser);
+    }
+
+    @Test
+    public void updateLossPlusOne_return200Status() throws Exception{
+        mockMvc.perform(get("/users/updateLossPlusOne/test")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void updateLossPlusOne_callsServiceWithPathVariable() throws Exception{
+        String testUser = "test";
+        mockMvc.perform(get("/users/updateLossPlusOne/"+testUser)).andExpect(status().isOk());
+        verify(userService).updateLossPlusOne(testUser);
+    }
 }
 
 

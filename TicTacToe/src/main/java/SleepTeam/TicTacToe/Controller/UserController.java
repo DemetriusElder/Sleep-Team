@@ -26,7 +26,13 @@ public class UserController {
 	public User findByUsername(@PathVariable("username") String username){
 		return userService.findByUsername(username);
 	}
+	@PostMapping("/updateWinPlusOne/{username}")
+	public User updateWinPlusOne(@PathVariable("username") String username) {
+		return userService.updateWinPlusOne(username);
+	}
+	@PostMapping("/updateLossPlusOne/{username}")
+	public User updateLossPlusOne(@PathVariable("username") String username) {
+		return userService.updateLossPlusOne(username);
+	}
 
-	//add 1 to win
-	//add 1 to loss
 }
