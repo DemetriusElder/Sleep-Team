@@ -8,18 +8,22 @@ import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameSettingsComponent,
     ScoreboardComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
