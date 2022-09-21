@@ -18,11 +18,11 @@ public interface UserRepo extends JpaRepository<User, Long>{
     @Transactional
     @Modifying
     @Query(value="UPDATE User u SET wins=wins+1 WHERE u.username=  ?1")
-    void updateWinPlusOne(String username);
+    int updateWinPlusOne(String username);
     @Transactional
     @Modifying
     @Query(value="UPDATE User u SET losses=losses+1 WHERE u.username=  ?1")
-    void updateLossPlusOne(String username);
+    int updateLossPlusOne(String username);
 }
 //@Query(value="UPDATE user u SET WINS=WINS+1 WHERE u.username=  ?1")
 //@Query(value="SELECT u FROM User u WHERE u.username = ?1")
