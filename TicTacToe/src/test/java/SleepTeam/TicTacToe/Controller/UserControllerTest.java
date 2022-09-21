@@ -8,6 +8,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
@@ -57,5 +59,29 @@ public class UserControllerTest {
 
         //assert
         assertEquals(user, result);
+    }
+
+    @Test
+    public void findByUsername_notNull(){
+        when(userService.findByUsername("test")).thenReturn(new User());
+        assertNotNull(userController.findByUsername("test"));
+    }
+
+    @Test
+    public void findByUsername_callsServiceByMethod(){
+        String testUser = "test";
+        userController.findByUsername(testUser);
+        verify(userService).findByUsername(testUser);
+    }
+
+    @Test
+    public void findByUsername_returnsUserFromUserService(){
+        String testUser = "test";
+        User expectedUser = new User("test", "test", 0, 0);
+        when(userService.findByUsername(testUser)).thenReturn(expectedUser);
+
+        User result = userController.findByUsername(testUser);
+
+        assertEquals(expectedUser,result);
     }
 }

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import SleepTeam.TicTacToe.Repo.UserRepo;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 	
@@ -21,6 +23,6 @@ public class UserService {
 	}
 
 	public User findById(long userId) {
-		return new User();
+		return userRepo.findById(userId);
 	}
 }

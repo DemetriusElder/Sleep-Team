@@ -39,21 +39,37 @@ public class UserControllerT {
     @Test
     public void findById_returns200Status() throws Exception{
         //act  /assert
-        mockMvc.perform(get("/user/1")).andExpect(status().isOk());
+        mockMvc.perform(get("/users/id/1")).andExpect(status().isOk());
     }
 
     @Test
     public void findById_callsUserServiceWithPathVariable() throws Exception{
         //arrange
-        Long userId = 3L;
+        long userId = 3;
         //act
-        mockMvc.perform(get("/user/" + userId)).andExpect(status().isOk());
+        mockMvc.perform(get("/users/id/" + userId)).andExpect(status().isOk());
         //assert -verify that the mock is called
         verify(userService).findById(userId);
-        verify(userService, times(1)).findById(3L);
+        verify(userService, times(1)).findById(userId);
+    }
+    @Test
+    public void findByUsername_returns200Status() throws Exception{
+        mockMvc.perform(get("/users/username/test")).andExpect(status().isOk());
+
     }
 
-    //this test is uncessary .
+    @Test
+    public void findByUsername_callsUserServiceWithPathVariable() throws Exception{
+        String userName = "test";
+        mockMvc.perform(get("/users/username/" + userName)).andExpect(status().isOk());
+        verify(userService).findByUsername(userName);
+    }
+
+
+}
+
+
+//this test is uncessary .
 //    @Test
 //    public void findById_throwsNotFound_invalidId() throws Exception{
 //        Long userId = 5L;
@@ -63,4 +79,3 @@ public class UserControllerT {
 //        //act
 //        mockMvc.perform(get("/user/5")).andExpect(status().isNotFound());
 //    }
-}

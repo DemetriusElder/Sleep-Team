@@ -6,36 +6,27 @@ import org.springframework.web.bind.annotation.*;
 
 import SleepTeam.TicTacToe.Service.UserService;
 
+import java.util.Optional;
+
 
 @RestController
 @CrossOrigin	
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	private UserService userService;
 	@Autowired
 	public UserController(UserService userService){
 		this.userService = userService;
 	}
-    @GetMapping("/{userId}")
+    @GetMapping("/id/{userId}")
 	public User findById(@PathVariable("userId") long userId) {
 		return userService.findById(userId);
-
 	}
+	@GetMapping("/username/{username}")
+	public User findByUsername(@PathVariable("username") String username){
+		return userService.findByUsername(username);
+	}
+
+	//add 1 to win
+	//add 1 to loss
 }
-//	private final UserService userService;
-//
-//	@Autowired
-//	public UserController(UserService userService) {
-//		this.userService = userService;
-//	}
-//	@GetMapping("/hi")
-//	public String hi() {
-//		return "hi";
-//	}
-//
-//	@GetMapping("/{username}")
-//	@ResponseBody
-//	public String getUserByUsername(@PathVariable String username){
-//		return username;
-//	}
-//
