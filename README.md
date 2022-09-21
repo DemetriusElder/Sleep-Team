@@ -20,10 +20,6 @@ A Tic-Tac-Toe site to play the game with a bot or a person.
     - 2d Array (3x3) filled with undefined x's or o's, state of game (Finished or Unfinished), Winner ( x's or o's or undefined)
 - [] Controllers and Services (Simon and Demetrius)
     -Basic stuff. Endpoint to call board model vs ai and seperate one for vs player, endpoint to call user model.
-        -[x]updateWinPlusOne path: /users/updateWinPlusOne/{username}       returns: User object      error return: nothing (to be updated)
-        -[x]updateLossPlusOne path: /users/updateLossPlusOne/{username}     returns: User object      error return: nothing (to be updated)
-        -[x]find user by id path: /users/id/{userId}                        returns: User object      error return: nothing (to be updated)
-        -[x]find user by username path: /users/username/{username}          returns: User object      error return: nothing (to be updated)
 
 #### Frontend To Do:
 - [] TicTacToe NavBar (Devin)
