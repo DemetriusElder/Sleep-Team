@@ -9,11 +9,20 @@ import { gameboard } from '../model/gameboard';
   styleUrls: ['./gameboard.component.css']
 })
 export class GameboardComponent implements OnInit {
-gameboard!: gameboard;
 
   constructor(public gameBoardService: GameBoardService) { }
 
   ngOnInit(): void {
+    this.gameBoardService.nextPlayer = localStorage.getItem('X');
+    if(localStorage.getItem('X') == 'undefined') {
+      this.gameBoardService.nextPlayer = 'X';
+    }
+    if(this.gameBoardService.nextPlayer == 'X') {
+      this.gameBoardService.prevPlayer == 'O';
+    }
+    else {
+      this.gameBoardService.prevPlayer = 'X';
+    }
 
   }
   reset(){

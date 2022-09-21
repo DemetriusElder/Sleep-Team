@@ -9,7 +9,7 @@ import { GameSettingsComponent } from '../game-settings/game-settings.component'
 export class GameBoardService {
   board!:string[][];
   prevPlayer!: string;
-  nextPlayer!: string | null;
+  nextPlayer: string | null = 'X';
   apiBaseUrl!: 'http://localhost:8080';
   endgame!:boolean;
  
@@ -22,8 +22,6 @@ export class GameBoardService {
    newGame(){
     this.board = this.createBoard();
     //later can change to let user select who(O or x) go first
-    this.prevPlayer = "O";
-    this.nextPlayer = localStorage.getItem('X');
     this.endgame = false;
     this.router.navigate(['settings']);
   } 
