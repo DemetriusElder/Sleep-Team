@@ -28,7 +28,9 @@ public class UserController {
 	}
 	@PostMapping("/updateWinPlusOne/{username}")
 	public User updateWinPlusOne(@PathVariable("username") String username) {
-		return userService.updateWinPlusOne(username);
+		User result = userService.updateWinPlusOne(username);
+		return result;
+
 	}
 	@PostMapping("/updateLossPlusOne/{username}")
 	public User updateLossPlusOne(@PathVariable("username") String username) {

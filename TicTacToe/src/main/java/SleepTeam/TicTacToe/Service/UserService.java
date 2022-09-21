@@ -2,6 +2,8 @@ package SleepTeam.TicTacToe.Service;
 
 import SleepTeam.TicTacToe.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import SleepTeam.TicTacToe.Repo.UserRepo;
@@ -27,12 +29,21 @@ public class UserService {
 	}
 
 	public User updateWinPlusOne(String username) {
-		userRepo.updateWinPlusOne(username);
-		return userRepo.findByUsername(username);
+		int updateSuccess = userRepo.updateWinPlusOne(username);
+		if(updateSuccess == 1){
+			return userRepo.findByUsername(username);
+		}else{
+			throw new RuntimeException("No username found");
+		}
 	}
 
 	public User updateLossPlusOne(String username) {
-		userRepo.updateLossPlusOne(username);
-		return userRepo.findByUsername(username);
+
+		int updateSuccess = userRepo.updateLossPlusOne(username);
+		if(updateSuccess == 1){
+			return userRepo.findByUsername(username);
+		}else{
+			throw new RuntimeException("No username found");
+		}
 	}
 }
