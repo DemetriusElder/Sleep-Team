@@ -7,6 +7,7 @@ import javax.persistence.Table;
 
 
 @Entity
+@Table(name = "users")
 public class User {
 	
 	@Id
@@ -20,7 +21,7 @@ public class User {
 	private int wins;
 	
 	private int losses;
-	
+
 	public User() {
 		
 	}
