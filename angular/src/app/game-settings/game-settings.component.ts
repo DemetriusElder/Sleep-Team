@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ScoreboardComponent } from '../scoreboard/scoreboard.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-settings',
@@ -9,19 +9,27 @@ import { ScoreboardComponent } from '../scoreboard/scoreboard.component';
 })
 export class GameSettingsComponent implements OnInit {
   player!: string;
+  submitChar: any;
+  char!: string;
+  submitDiff: any;
   
   settingsForm = new FormGroup({
     char: new FormControl('', [Validators.required]),
     difficulty: new FormControl('', [Validators.required])
   });
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.log(this.settingsForm.value.char);
-    console.log(this.settingsForm.value.difficulty);
+    this.submitChar = Object.assign({},this. settingsForm.value.char);
+    this.char = this.submitChar[0];
+    console.log(this.char);
+    localStorage.setItem('X', JSON.stringify(this.char));
+    this.submitDiff = Object.assign({},this. settingsForm.value.difficulty);
+    console.log(this.submitDiff);
+    this.router.navigate(['game']);
   }
 
 }
