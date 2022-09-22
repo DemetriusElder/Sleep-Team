@@ -1,6 +1,9 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GameSettingsComponent } from '../game-settings/game-settings.component';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Gamestate } from '../model/Gamestate';
  
 @Injectable({
   providedIn: 'root'
@@ -9,8 +12,16 @@ export class GameBoardService {
   board!:string[][];
   prevPlayer!: string;
   nextPlayer: string | null = 'X';
-  apiBaseUrl!: 'http://localhost:8080';
   endgame!:boolean;
+  apiBaseUrl = 'http://localhost:8080/board';
+  test: any;
+  gametest: Gamestate = {
+    id: 1,
+    finished : false,
+    winner : 'test',
+    boardstate : [ ['x','o','o'],['o','o','o'],['o','o','o'] ]
+
+  };
  
 
   constructor(private router: Router, private http: HttpClient) {

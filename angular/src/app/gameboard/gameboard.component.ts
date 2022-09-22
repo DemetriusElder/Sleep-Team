@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameSettingsComponent } from '../game-settings/game-settings.component';
 import { GameBoardService } from '../gameboard-service/gameboard.service';
-import { gameboard } from '../model/gameboard';
+import { Gamestate } from '../model/Gamestate';
 
 @Component({
   selector: 'app-gameboard',
