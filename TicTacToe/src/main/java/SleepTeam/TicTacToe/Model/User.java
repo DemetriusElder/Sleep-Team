@@ -1,7 +1,7 @@
 package SleepTeam.TicTacToe.Model;
 import javax.persistence.*;
 
-
+//@Table(name = "users")
 @Entity
 @Table(name = "users")
 public class User {
