@@ -5,24 +5,34 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameSettingsComponent } from './game-settings/game-settings.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
+import { GameboardComponent } from './gameboard/gameboard.component';
+import { SquareComponent } from './square/square.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameSettingsComponent,
     ScoreboardComponent,
-    LoginModalComponent
+    GameboardComponent,
+    SquareComponent,
+    LoginModalComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
     NgbModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [GameSettingsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

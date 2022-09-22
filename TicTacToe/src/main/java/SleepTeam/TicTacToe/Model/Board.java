@@ -58,7 +58,7 @@ public class Board {
 		return boardstate;
 	}
 
-	public void setBoardstate(String[][] booardstate) {
+	public void setBoardstate(String[][] boardstate) {
 		this.boardstate = boardstate;
 	}
 
