@@ -27,6 +27,6 @@ export class GameboardComponent implements OnInit {
   }
   reset(){
     console.log('resting...');
-    this.gameBoardService.newGame();
+    this.gameBoardService.newGame();//add a .subscribe()
   }
 }

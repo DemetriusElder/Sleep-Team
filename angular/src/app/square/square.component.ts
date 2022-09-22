@@ -21,10 +21,10 @@ export class SquareComponent implements OnInit {
     //call update board
     this.gameboardService.updateBoard(this.row,this.col,player);
     //ai auto move(right now just ramdom move)
-    if(player == 'X' && !this.gameboardService.endgame){
+    /*if(player == 'X' && !this.gameboardService.endgame){
       this.gameboardService.updateBoard(0,0,'O');
-      let player = this.gameboardService.switchPlayer();
-    }
+      //let player = this.gameboardService.switchPlayer();
+    }*/
   }
 
 }

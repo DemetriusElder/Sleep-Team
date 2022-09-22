@@ -1,7 +1,6 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { GameSettingsComponent } from '../game-settings/game-settings.component';
  
 @Injectable({
   providedIn: 'root'
@@ -18,12 +17,18 @@ export class GameBoardService {
     this.newGame()
    }
  
-  //start a new game at the begining or reset
    newGame(){
+     if(this.nextPlayer == 'X') {
+       this.prevPlayer == 'O';
+     }
+     if(this.nextPlayer == 'O') {
+       this.prevPlayer == 'X';
+     }
     this.board = this.createBoard();
-    //later can change to let user select who(O or x) go first
     this.endgame = false;
     this.router.navigate(['settings']);
+    //needs to make a call to backend to reset gameboard 
+    //return this.http.get("string for blank board");
   } 
 
   createBoard(){
@@ -33,12 +38,13 @@ export class GameBoardService {
   }
 
   switchPlayer(){
-    this.prevPlayer = this.prevPlayer === "X" ? "O" : "X";
+    //this.prevPlayer = this.prevPlayer === "X" ? "O" : "X";
     this.nextPlayer = this.nextPlayer === "X" ? "O" : "X";
     //send the board to backend for evaluation
     //update if wins
     this.endgame = this.getwinner();
     return this.prevPlayer;
+    
   }
   updateBoard(row:number,col:number,player:string){
     if(player == 'O'){
@@ -71,6 +77,8 @@ export class GameBoardService {
         return false;
       }
     }
+    alert("winner!");
     return true;
   }
+ 
 }
