@@ -9,8 +9,7 @@ import { Gamestate } from '../model/Gamestate';
   providedIn: 'root'
 })
 export class GameBoardService {
-  board!:string[][];
-  prevPlayer!: string;
+  prevPlayer: string | null = 'O';
   nextPlayer: string | null = 'X';
   endgame!:boolean;
   apiBaseUrl = 'http://localhost:8080/board';
@@ -19,7 +18,7 @@ export class GameBoardService {
     id: 1,
     finished : false,
     winner : 'test',
-    boardstate : [ ['x','o','o'],['o','o','o'],['o','o','o'] ]
+    boardstate : [ ['','',''],['','',''],['','',''] ]
 
   };
  
@@ -29,54 +28,51 @@ export class GameBoardService {
    }
  
    newGame(){
-     if(this.nextPlayer == 'X') {
-       this.prevPlayer == 'O';
-     }
-     if(this.nextPlayer == 'O') {
-       this.prevPlayer == 'X';
-     }
-    this.board = this.createBoard();
+    this.gametest.boardstate = this.createBoard();
     this.endgame = false;
     this.router.navigate(['settings']);
-    //needs to make a call to backend to reset gameboard 
-    //return this.http.get("string for blank board");
+    return this.http.get('http://localhost:8080/board/reset');
   } 
 
   createBoard(){
     // let board = [...Array(3)].map(e => Array(3));
-    let board:string[][]=[ ['','',''],['','',''],['','',''] ]
-    return board;
+    this.gametest.boardstate =[ ['','',''],['','',''],['','',''] ]
+    return this.gametest.boardstate;
   }
 
   switchPlayer(){
-    //this.prevPlayer = this.prevPlayer === "X" ? "O" : "X";
+   
+    this.prevPlayer = this.prevPlayer === "X" ? "O" : "X";
     this.nextPlayer = this.nextPlayer === "X" ? "O" : "X";
     //send the board to backend for evaluation
     //update if wins
     this.endgame = this.getwinner();
     return this.prevPlayer;
-    
   }
   updateBoard(row:number,col:number,player:string){
+    console.log(row);
+    console.log(col);
     if(player == 'O'){
     row = this.mockMove().row;
     col = this.mockMove().col;
     }
-    this.board[row][col] = player;
+    this.gametest.boardstate[row][col] = player;
     this.endgame = this.checkFull();
+    return this.http.get<Gamestate>(`http://localhost:8080/board/human?row=${row}&column=${col}&XorO=${player}`)
   }
+  
   //todo: get win status -> endgame
  public getwinner() : any{
-    return this.http.post('http://localhost:8080/board/checkWinner',JSON.stringify(this.board))
+    return this.http.post('http://localhost:8080/board/checkWinner',JSON.stringify(this.gametest.boardstate))
   }
   //todo:get Ai move
-  public getAiMove() : any{
-    return this.http.get(`${this.apiBaseUrl}/board?board=${this.board}`)
+  public getAiMove(apiChar: string) : any{
+    return this.http.get<Gamestate>(`http://localhost:8080/board/ai?XorO=${apiChar}`)
   }
   public mockMove() : any{
     for(let i =0;i<3;i++){
       for(let j = 0;j<3;j++){
-        if(this.board[i][j] == '')
+        if(this.gametest.boardstate[i][j] == '')
         return {row:i,col:j};
       }
     }
@@ -84,7 +80,7 @@ export class GameBoardService {
   public checkFull():boolean{
     for(let i =0;i<3;i++){
       for(let j = 0;j<3;j++){
-        if(this.board[i][j] == '')
+        if(this.gametest.boardstate[i][j] == '')
         return false;
       }
     }

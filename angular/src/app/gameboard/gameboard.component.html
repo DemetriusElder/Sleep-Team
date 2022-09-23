@@ -1,7 +1,7 @@
 <h1 class="header" >{{gameBoardService.nextPlayer}}'s Turn  </h1>
 
       <section >
-      <div  class="flex-container" [ngClass]="{noClick:gameBoardService.endgame == true}" *ngFor="let row of gameBoardService.board;let i = index;"> 
+      <div  class="flex-container" [ngClass]="{noClick:gameBoardService.endgame == true}" *ngFor="let row of gameBoardService.gametest.boardstate;let i = index;"> 
         <div  *ngFor="let square of row; let j = index;">
         <app-square [square]="square" [row] = "i" [col] = "j"> </app-square>
         </div>

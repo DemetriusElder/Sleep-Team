@@ -28,11 +28,11 @@ public class BoardController {
 	
 	@GetMapping("/ai")
 	public Board getBoardVsAI(@RequestParam String XorO) {
-		return boardService.changeBoardStateAI(XorO);	
+		return boardService.changeBoardStateAI(XorO);
 	}
 	@GetMapping("/reset")
 	public void getResetBoard() {
-		boardService.resetBoard();	
+		boardService.resetBoard();
 	}
 	@GetMapping("/human")
 	public Board getBoardVsHuman(@RequestParam int row,@RequestParam int column,@RequestParam String XorO) {

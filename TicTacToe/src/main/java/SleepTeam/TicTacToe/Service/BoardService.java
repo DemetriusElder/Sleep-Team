@@ -32,8 +32,6 @@ private String[][] board = {{" ", " ", " "}, {" ", " "," "}, {" ", " "," "}};
 		Board testBoard = new Board(false, "");
 		String[][] proxyArray = this.board;
 		testBoard.setBoardstate(proxyArray);
-//		System.out.println(proxyArray[1][1]);
-//		System.out.println(testBoard.getBoardstate()[1][1]);
 		testBoard = this.checkWinner(testBoard);
 		Random rand = new Random();
 		if (testBoard.isFinished() == false) {
@@ -61,6 +59,7 @@ private String[][] board = {{" ", " ", " "}, {" ", " "," "}, {" ", " "," "}};
 	}
 	
 	public Board changeBoardStateHuman(String XorO, int row, int column) {
+		System.out.println(row + "" + column);
 		Board testBoard = new Board(false, "");
 		testBoard.setBoardstate(board);
 		String[][] proxyArray = board;
@@ -72,7 +71,6 @@ private String[][] board = {{" ", " ", " "}, {" ", " "," "}, {" ", " "," "}};
 	
 	public Board checkWinner(Board boardboard) {
 		String[][] proxyArray = boardboard.getBoardstate();
-		System.out.println("Inside checkWinnerFunction");
 		for (int i = 0; i<3; i++) {
 		    for (int j = 0; j<3; j++) {
 		        System.out.print(proxyArray[i][j]);
@@ -88,7 +86,6 @@ private String[][] board = {{" ", " ", " "}, {" ", " "," "}, {" ", " "," "}};
 		}
 		//checks up and down
 		for(int i = 0; i <= 2; i++){
-			System.out.println("Inside for loop Column: up and down");
 			if (proxyArray[0][i].compareTo(proxyArray[1][i]) == 0 && proxyArray[1][i].compareTo(proxyArray[2][i]) == 0 && proxyArray[1][i] != " ") {
 				boardboard.setFinished(true);
 				boardboard.setWinner(proxyArray[0][i]);

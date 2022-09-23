@@ -1,4 +1,4 @@
 <button 
 class="game-square"  (click)="changeState()" [ngClass]="{noClick: square!=''}"  >
-<p [ngClass]="{changecolor: square == 'X'}">{{square}}</p>   
+<p *ngIf="player == 'X'? {changecolor: square == 'O'} : {changecolor: square == 'X'}">{{square}}</p>   
 </button>
