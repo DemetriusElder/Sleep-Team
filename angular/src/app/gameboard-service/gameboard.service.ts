@@ -1,73 +1,103 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GameSettingsComponent } from '../game-settings/game-settings.component';
+import { Gamestate } from '../model/Gamestate';
+import { Observable, of } from 'rxjs';
  
 @Injectable({
   providedIn: 'root'
 })
 export class GameBoardService {
   board!:string[][];
-  prevPlayer!: string;
+  currentPlayer!: string;
   nextPlayer!:string;
-  apiBaseUrl!: 'http://localhost:8080';
-  endgame!:boolean;
+  winner!:string;
+  player1!:any;
+  player2!:any;
+  start!:string;
+  mode!:string;
 
-  constructor(private http: HttpClient) {
-    this.newGame()
+  constructor(private http: HttpClient ) {
    }
-  //start a new game at the begining or reset
-   newGame(){
-    this.board = this.createBoard();
-    //later can change to let user select who(O or x) go first
-    this.prevPlayer = "O";
-    this.nextPlayer = "X";
-    this.endgame = false;
-  } 
 
-  createBoard(){
-    // let board = [...Array(3)].map(e => Array(3));
-    let board:string[][]=[ ['','',''],['','',''],['','',''] ]
+  //Start a new game at the begining or reset
+  newGame(){ 
+  this.board = this.createBoard();
+  this.winner = '';
+  this.currentPlayer = this.start;
+  } 
+  //todo: we can add property like score,username...or create a player model when we add more stuff to it
+  setPlayer1(user:string,mark:string){
+    this.player1 = {user:user,
+                    mark:mark};
+  }
+  //todo: we can add property like score,username...or create a player model when we add more stuff to it
+  setPlayer2(user:string,mark:string){
+    this.player2 = {user:user,
+                    mark:mark};
+  }
+
+  setCurrent(player:string){
+    this.currentPlayer = player;
+    //who is the first one to move, for reset
+    this.start = player;
+    this.nextPlayer = player === "X" ? "O" : "X";
+  }
+  setMode(mode:string){
+    this.mode = mode;
+  }
+
+  createBoard(): string[][]{     
+    console.log("Backend reset");
+    let board:string[][]=[ [' ',' ',' '],[' ',' ',' '],[' ',' ',' '] ]
+    this.testResetFunction().subscribe((result) => {
+    });
     return board;
   }
 
-  switchPlayer(){
-    this.prevPlayer = this.prevPlayer === "X" ? "O" : "X";
+  switchPlayer(): string{
+    this.currentPlayer = this.currentPlayer === "X" ? "O" : "X";
+    console.log('Current player',this.currentPlayer)
+    //for display next player
     this.nextPlayer = this.nextPlayer === "X" ? "O" : "X";
-    //send the board to backend for evaluation
-    //update if wins
-    this.endgame = this.getwinner();
-    return this.prevPlayer;
+    return this.currentPlayer;
   }
-  updateBoard(row:number,col:number,player:string){
-    if(player == 'O'){
-    row = this.mockMove().row;
-    col = this.mockMove().col;
-    }
-    this.board[row][col] = player;
-    this.endgame = this.checkFull();
+
+  // updateBoard(row:number,col:number,player:string){ 
+  //   // this.board[row][col] = player;
+  //   //update human move with backend
+  //   this.testHumanFunction(row, col, player).subscribe((result) => {  
+  //   console.log(result); 
+  //   this.winner = result.winner;
+  //   this.board = result.boardstate;
+  // });   
+  // }
+
+  // updateBoardAI(player:string): void{
+  //     this.testFunction(player).subscribe((result) => {
+  //       this.board = result.boardstate;
+  //       console.log(result); 
+  //       this.winner = result.winner;
+  //     });
+     
+  // }
+
+  //Send Ai's X or O to backend it will return the ai move to us,  backend always has the latest board
+  public testFunction(XorO: string): Observable<Gamestate>{
+    return this.http.get<Gamestate>(`http://localhost:8080/board/ai?XorO=${XorO}`)
   }
-  //todo: get win status -> endgame
- public getwinner() : any{
-    return this.http.post('http://localhost:8080/board/checkWinner',JSON.stringify(this.board))
+
+  //Send human move to backend, so backend has the most updated board
+  public testHumanFunction(row: number, column: number,XorO: string): Observable<Gamestate>{
+    return this.http.get<Gamestate>(`http://localhost:8080/board/human?row=${row}&column=${column}&XorO=${XorO}`)
   }
-  //todo:get Ai move
-  public getAiMove() : any{
-    return this.http.get(`${this.apiBaseUrl}/board?board=${this.board}`)
+
+  //Reset the board in the backend
+  public testResetFunction(){
+    return this.http.get<void>(`http://localhost:8080/board/reset`)
   }
-  public mockMove() : any{
-    for(let i =0;i<3;i++){
-      for(let j = 0;j<3;j++){
-        if(this.board[i][j] == '')
-        return {row:i,col:j};
-      }
-    }
+    
   }
-  public checkFull():boolean{
-    for(let i =0;i<3;i++){
-      for(let j = 0;j<3;j++){
-        if(this.board[i][j] == '')
-        return false;
-      }
-    }
-    return true;
-  }
-}
+
+
+

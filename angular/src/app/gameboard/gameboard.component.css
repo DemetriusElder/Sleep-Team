@@ -1,5 +1,4 @@
  section {
-    
     align-content: space-between;
     align-items: center;
     margin: 7% auto 50px auto; 
@@ -29,11 +28,19 @@
     margin-top: 100px;
     text-align: center;
     font-size: 3rem;
-   
-}
-.flex-container{
+    color: lightskyblue;
+ 
+  }
+  .changecolor_x {
+    color: orange; 
+  }
+  .changecolor_o {
+    color: rgb(7, 167, 132);
+  }
+
+  .flex-container{
   display: flex;
-}
-.noClick{
+  }
+  .noClick{
   pointer-events: none;
-}
+  }
