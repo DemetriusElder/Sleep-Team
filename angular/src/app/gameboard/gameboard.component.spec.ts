@@ -18,6 +18,7 @@ describe('GameboardComponent', () => {
     })
     .compileComponents();
 
+
     fixture = TestBed.createComponent(GameboardComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(GameBoardService);
@@ -29,8 +30,10 @@ describe('GameboardComponent', () => {
   });
 
   it('reset should be called when reset', () =>{
+    // const spy = spyOn(component,'aiMode').and.callThrough();
     const spyOnService = spyOn(service,'newGame').and.callThrough();
     component.reset();
     expect(spyOnService).toHaveBeenCalled();
+    // expect(spy).toHaveBeenCalled();
   });
 });

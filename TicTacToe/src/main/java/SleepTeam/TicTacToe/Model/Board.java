@@ -14,9 +14,9 @@ public class Board {
 
 	private boolean finished;
 
-	private char winner;
+	private String winner;
 	
-	private char[][] boardstate = new char[3][3];
+	private String[][] boardstate = new String[3][3];
 	
 
 	public Board() {
@@ -24,7 +24,7 @@ public class Board {
 	}
 	
 	
-	public Board(boolean finished, char winner) {
+	public Board(boolean finished, String winner) {
 		this.finished = finished;
 		this.winner = winner;
 	}
@@ -46,19 +46,19 @@ public class Board {
 		this.finished = finished;
 	}
 
-	public char getWinner() {
+	public String getWinner() {
 		return winner;
 	}
 
-	public void setWinner(char winner) {
+	public void setWinner(String winner) {
 		this.winner = winner;
 	}
 
-	public char[][] getBoardstate() {
+	public String[][] getBoardstate() {
 		return boardstate;
 	}
 
-	public void setBoardstate(char[][] booardstate) {
+	public void setBoardstate(String[][] boardstate) {
 		this.boardstate = boardstate;
 	}
 

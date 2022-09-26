@@ -1,3 +1,4 @@
+<app-scoreboard></app-scoreboard>
 <h1 class="header"  *ngIf="gameBoardService.winner == '' ">{{gameBoardService.currentPlayer}}'s Turn  </h1>
 <h1 class="header" *ngIf="gameBoardService.winner != ''" [ngClass]="{changecolor_x:gameBoardService.winner == 'X' ,changecolor_o:gameBoardService.winner == 'O' }">{{gameBoardService.winner}} Win!!</h1>
       <section >
@@ -7,5 +8,8 @@
         </div>
       </div>    
 </section>  
-<button class="normal-btn" (click) = "reset()" >  RESET </button>
- 
+<div class="btn-container">
+  <button class="normal-btn" (click) = "reset()" >  RESET-> setting </button>
+  <button class="normal-btn" (click) = "nextgame()" >  Continue </button>
+</div>
+

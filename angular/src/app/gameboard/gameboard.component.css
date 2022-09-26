@@ -11,11 +11,16 @@
     /* Three values: flex-grow | flex-shrink | flex-basis */
     flex: 0 0 32%;   
   }
+  .btn-container{
+    display: flex;
+    margin:20px;
+
+  }
   .normal-btn{
     display: block;
     margin:20px auto;
     height: 80px;
-    width: 150px;
+    width: 170px;
     line-height: 0.85;
     cursor: pointer;
     font-size:2rem;

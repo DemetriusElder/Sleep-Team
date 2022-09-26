@@ -1,8 +1,7 @@
 import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GameSettingsComponent } from '../game-settings/game-settings.component';
 import { Gamestate } from '../model/Gamestate';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
  
 @Injectable({
   providedIn: 'root'
@@ -16,6 +15,7 @@ export class GameBoardService {
   player2!:any;
   start!:string;
   mode!:string;
+  
 
   constructor(private http: HttpClient ) {
    }
@@ -27,26 +27,28 @@ export class GameBoardService {
   this.currentPlayer = this.start;
   } 
   //todo: we can add property like score,username...or create a player model when we add more stuff to it
-  setPlayer1(user:string,mark:string){
+  setPlayer1(user:string,mark:string,score:number){
     this.player1 = {user:user,
-                    mark:mark};
+                    mark:mark,
+                  score:score};
   }
   //todo: we can add property like score,username...or create a player model when we add more stuff to it
-  setPlayer2(user:string,mark:string){
+  setPlayer2(user:string,mark:string,score:number){
     this.player2 = {user:user,
-                    mark:mark};
+                    mark:mark,
+                    score:score};
   }
 
   setCurrent(player:string){
     this.currentPlayer = player;
-    //who is the first one to move, for reset
+    //who is the first one to move, for continue btn
     this.start = player;
     this.nextPlayer = player === "X" ? "O" : "X";
   }
   setMode(mode:string){
     this.mode = mode;
   }
-
+  
   createBoard(): string[][]{     
     console.log("Backend reset");
     let board:string[][]=[ [' ',' ',' '],[' ',' ',' '],[' ',' ',' '] ]
@@ -62,25 +64,6 @@ export class GameBoardService {
     this.nextPlayer = this.nextPlayer === "X" ? "O" : "X";
     return this.currentPlayer;
   }
-
-  // updateBoard(row:number,col:number,player:string){ 
-  //   // this.board[row][col] = player;
-  //   //update human move with backend
-  //   this.testHumanFunction(row, col, player).subscribe((result) => {  
-  //   console.log(result); 
-  //   this.winner = result.winner;
-  //   this.board = result.boardstate;
-  // });   
-  // }
-
-  // updateBoardAI(player:string): void{
-  //     this.testFunction(player).subscribe((result) => {
-  //       this.board = result.boardstate;
-  //       console.log(result); 
-  //       this.winner = result.winner;
-  //     });
-     
-  // }
 
   //Send Ai's X or O to backend it will return the ai move to us,  backend always has the latest board
   public testFunction(XorO: string): Observable<Gamestate>{

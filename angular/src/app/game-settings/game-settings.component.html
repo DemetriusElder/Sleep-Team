@@ -1,2 +1,46 @@
-<h2>Player Name:</h2>
-<p>game-settings works!</p>
+
+<div class="body-container">
+  <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+    <div class="flex-container">
+      <div class="center-container">
+      </div>
+      <div class="pixelgram-title">Game Settings</div>
+    </div>
+
+    <!--<input type="text" placeholder="playerName" id="playerName" formControlName="playerName" 
+    class="form-input"/>
+    <div class="smallfield">
+    </div>-->
+    <div class="menu">
+      <label for="mode">Choose a mode: </label>
+      <select id="mode" name="mode" formControlName="mode">
+        <option value="AI">AI</option>
+        <option value="HUMAN">HUMAN</option> 
+      </select>
+    </div><br>
+    <div class="menu">
+      <label for="difficulty">Choose a difficulty: </label>
+      <select id="difficulty" name="difficulty" formControlName="difficulty">
+        <option value="easy">Easy</option>
+        <option value="hard">Hard</option> 
+      </select>
+    </div><br>
+    <div class="menu">
+      <label for="player1">Player 1 Choose a character: </label>
+      <select id="player1" name="player1" formControlName="player1">
+        <option value="X">X</option>
+        <option value="O">O</option> 
+      </select>
+    </div><br>
+    <div class="menu">
+    <label for="first">Choose a character to go first: </label>
+    <select id="first" name="first" formControlName="first">
+      <option value="X">X</option>
+      <option value="O">O</option> 
+    </select>
+    </div>
+    <div class="form-btns">
+      <button type="submit">Start Game</button>
+    </div>
+  </form>
+</div>

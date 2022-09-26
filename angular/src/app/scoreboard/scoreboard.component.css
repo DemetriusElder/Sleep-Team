@@ -1,10 +1,68 @@
-.scoreboard-container {
-    width: 100%;
+@import url("http://fonts.cdnfonts.com/css/billabong");
+.nav {
+  width: 100%;
+  background-color: #ffffff;
+  height: 5rem;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.09);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+}
+
+/*left content*/
+.left-container {
+  display: flex;
+}
+
+/*center content*/
+.center-container {
+  margin-right: 95px;
+  padding-left: 90px;
+}
+
+.scoreboard {
     display: flex;
+    width: 250px;
     justify-content: space-between;
 }
-.right-container {
+.score {
     display: flex;
-    justify-content: space-between;
-    width: 33%;
+}
+.score p {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+/* right content*/
+.right-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+}
+.user-pic {
+  padding-top: 5px;
+  height: 1.46rem;
+  width: 1.6rem;
+}
+
+.user-pic:hover {
+  cursor: pointer;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited :focus :active {
+  color: black;
+}
+
+#right-nav-stuff {
+  float: left;
 }
