@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./game-settings.component.css']
 })
 export class GameSettingsComponent implements OnInit {
-  
-  constructor(private gameboardService:GameBoardService, private router: Router) { }
+  submitted: boolean = false;
   settingsForm = new FormGroup({
     mode: new FormControl('', [Validators.required]),
     first: new FormControl('', [Validators.required]),
     player1: new FormControl('', [Validators.required]),
     difficulty: new FormControl('', [Validators.required])
   });
+  constructor(private gameboardService:GameBoardService, private router: Router) { }
+  
   
   ngOnInit(): void {
 
@@ -24,7 +25,9 @@ export class GameSettingsComponent implements OnInit {
   
   //todo: check make sure user can only press submit when the form is filled 
   onSubmit() {
+      this.submitted = true;
       let mode = this.settingsForm.get('mode')!.value;
+      console.log(mode);
       let player1char = this.settingsForm.get('player1')!.value;
       let first = this.settingsForm.get('first')!.value;
       this.gameboardService.newGame();

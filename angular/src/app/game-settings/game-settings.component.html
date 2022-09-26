@@ -13,34 +13,35 @@
     </div>-->
     <div class="menu">
       <label for="mode">Choose a mode: </label>
-      <select id="mode" name="mode" formControlName="mode">
+      <select id="mode" name="mode" formControlName="mode" [ngStyle]="{ 'border': settingsForm.get('mode')?.touched && settingsForm.get('mode')?.errors?.['required'] ? '1px solid red' : '1px solid black'}">
         <option value="AI">AI</option>
         <option value="HUMAN">HUMAN</option> 
       </select>
     </div><br>
     <div class="menu">
       <label for="difficulty">Choose a difficulty: </label>
-      <select id="difficulty" name="difficulty" formControlName="difficulty">
+      <select id="difficulty" name="difficulty" formControlName="difficulty" [ngStyle]="{ 'border': settingsForm.get('difficulty')?.touched && settingsForm.get('difficulty')?.errors?.['required'] ? '1px solid red' : '1px solid black'}">
         <option value="easy">Easy</option>
         <option value="hard">Hard</option> 
       </select>
     </div><br>
     <div class="menu">
       <label for="player1">Player 1 Choose a character: </label>
-      <select id="player1" name="player1" formControlName="player1">
+      <select id="player1" name="player1" formControlName="player1" [ngStyle]="{ 'border': settingsForm.get('player1')?.touched && settingsForm.get('player1')?.errors?.['required'] ? '1px solid red' : '1px solid black'}">
         <option value="X">X</option>
         <option value="O">O</option> 
       </select>
     </div><br>
     <div class="menu">
     <label for="first">Choose a character to go first: </label>
-    <select id="first" name="first" formControlName="first">
+    <select id="first" name="first" formControlName="first" [ngStyle]="{ 'border': settingsForm.get('first')?.touched && settingsForm.get('first')?.errors?.['required'] ? '1px solid red' : '1px solid black'}">
       <option value="X">X</option>
       <option value="O">O</option> 
     </select>
     </div>
     <div class="form-btns">
-      <button type="submit">Start Game</button>
+      <button type="submit" [disabled]="settingsForm.controls.difficulty.errors || settingsForm.controls.first.errors || 
+      settingsForm.controls.mode.errors || settingsForm.controls.player1.errors">Start Game</button>
     </div>
   </form>
 </div>

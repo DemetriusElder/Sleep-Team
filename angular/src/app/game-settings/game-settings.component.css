@@ -65,5 +65,9 @@
       margin: 15px;
       padding-left: 10px;
   }
+  .error {
+    color: red;
+    font-weight: bolder;
+  }
   
   
