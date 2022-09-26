@@ -1,4 +1,5 @@
 <button 
-class="game-square"  (click)="changeState()" [ngClass]="{noClick: square!=''}"  >
-<p [ngClass]="{changecolor: square == 'X'}">{{square}}</p>   
+class="game-square"   (click)="changeState()" [ngClass]="{noClick: square!=' '}"  >
+<p [ngClass]="{changecolor: square == 'X'}">{{square}}</p> 
+
 </button>

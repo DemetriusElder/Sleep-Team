@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameSettingsComponent } from '../game-settings/game-settings.component';
 import { GameBoardService } from '../gameboard-service/gameboard.service';
-import { Gamestate } from '../model/Gamestate';
 
 @Component({
   selector: 'app-gameboard',
@@ -9,15 +7,33 @@ import { Gamestate } from '../model/Gamestate';
   styleUrls: ['./gameboard.component.css']
 })
 export class GameboardComponent implements OnInit {
-gameboard!: Gamestate;
+
 
   constructor(public gameBoardService: GameBoardService) { }
 
   ngOnInit(): void {
-
+    //Default humanMode
+    //change mode in setting.component
+    console.log("ngOnInit: currentplayer: ", this.gameBoardService.currentPlayer);
+    this.aiMode();
   }
-  reset(){
-    console.log('resting...');
+
+  aiMode(){
+    //Special case: When AI is the first one to move.(Ai don't know how to press btn to invoke the changestate function)
+    console.log("Current player:", this.gameBoardService.currentPlayer);
+    if((this.gameBoardService.currentPlayer== this.gameBoardService.player1.mark && this.gameBoardService.player1.user == "AI" )
+    || (this.gameBoardService.currentPlayer == this.gameBoardService.player2.mark && this.gameBoardService.player2.user == "AI")){
+      console.log("AI moved:", this.gameBoardService.currentPlayer);
+      this.gameBoardService.testFunction(this.gameBoardService.currentPlayer).subscribe((result) => {
+        this.gameBoardService.board = result.boardstate;
+        console.log(result); 
+        this.gameBoardService.winner = result.winner; 
+        this.gameBoardService.switchPlayer();
+      });
+    }}
+
+  reset(){ 
     this.gameBoardService.newGame();
+    this.aiMode();
   }
 }

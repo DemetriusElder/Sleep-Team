@@ -5,13 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameSettingsComponent } from './game-settings/game-settings.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
-
-import { LoginModalComponent } from './login-modal/login-modal.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GameboardComponent } from './gameboard/gameboard.component';
 import { SquareComponent } from './square/square.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -30,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatToolbarModule,
     NgbModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [GameSettingsComponent],
