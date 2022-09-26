@@ -17,8 +17,4 @@ export class AppComponent {
 
   }
 
-  openLoginModal(){
-    const modalRef = this.modalService.open(LoginModalComponent);
-  }
-
 }

@@ -19,7 +19,6 @@ export class SquareComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   changeState()
   {
     if(this.gameboardService.mode == "HUMAN") {
@@ -76,6 +75,5 @@ if(this.gameboardService.mode == "AI"){
  
 
   }
-  
 
 }
