@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameBoardService } from '../gameboard-service/gameboard.service';
-import { Gamestate } from '../model/Gamestate';
 
 @Component({
   selector: 'app-square',
@@ -16,7 +15,6 @@ export class SquareComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   changeState()
   {
     if(this.gameboardService.mode == "HUMAN") {
@@ -62,6 +60,5 @@ if(this.gameboardService.mode == "AI"){
  
 
   }
-  
 
 }

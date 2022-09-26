@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Output } from '@angular/core';
 import { GameBoardService } from '../gameboard-service/gameboard.service';
 
@@ -36,5 +37,15 @@ export class GameSettingsComponent implements OnInit {
     this.gameboardService.setMode("AI");
     //
 }
+
+  onSubmit() {
+    this.submitChar = Object.assign({},this. settingsForm.value.char);
+    this.char = this.submitChar[0];
+    console.log(this.char);
+    localStorage.setItem('X', JSON.stringify(this.char));
+    this.submitDiff = Object.assign({},this. settingsForm.value.difficulty);
+    console.log(this.submitDiff);
+    this.router.navigate(['game']);
+  }
 
 }

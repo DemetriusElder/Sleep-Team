@@ -25,11 +25,13 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [GameSettingsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+
 import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GameSettingsComponent } from '../game-settings/game-settings.component';
@@ -98,6 +99,3 @@ export class GameBoardService {
   }
     
   }
-
-
-

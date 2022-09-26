@@ -1,11 +1,10 @@
 package SleepTeam.TicTacToe.Model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.*;
 
+//@Table(name = "users")
 @Entity
 @Table(name = "users")
 public class User {
@@ -13,7 +12,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+	@Column(unique=true)
 	private String username;
 	
 	private String password;
@@ -21,7 +20,7 @@ public class User {
 	private int wins;
 	
 	private int losses;
-	
+
 	public User() {
 		
 	}
@@ -54,7 +53,9 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
+	@JsonIgnore
+	@JsonProperty(value = "password")
 	public String getPassword() {
 		return password;
 	}

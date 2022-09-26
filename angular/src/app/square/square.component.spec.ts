@@ -1,3 +1,4 @@
+
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -11,7 +12,7 @@ describe('SquareComponent', () => {
     await TestBed.configureTestingModule({
       imports:[HttpClientTestingModule],
       declarations: [ SquareComponent ]
- 
+
     })
     .compileComponents();
 

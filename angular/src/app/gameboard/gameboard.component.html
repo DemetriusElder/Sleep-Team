@@ -1,11 +1,13 @@
+
 <h1 class="header"  *ngIf="gameBoardService.winner == '' ">{{gameBoardService.currentPlayer}}'s Turn  </h1>
 <h1 class="header" *ngIf="gameBoardService.winner != ''" [ngClass]="{changecolor_x:gameBoardService.winner == 'X' ,changecolor_o:gameBoardService.winner == 'O' }">{{gameBoardService.winner}} Win!!</h1>
       <section >
       <div  class="flex-container" [ngClass]="{noClick:gameBoardService.winner != ''}" *ngFor="let row of gameBoardService.board;let i = index;"> 
+
         <div  *ngFor="let square of row; let j = index;">
         <app-square [square]="square" [row] = "i" [col] = "j"> </app-square>
         </div>
       </div>    
 </section>  
 <button class="normal-btn" (click) = "reset()" >  RESET </button>
- 
+

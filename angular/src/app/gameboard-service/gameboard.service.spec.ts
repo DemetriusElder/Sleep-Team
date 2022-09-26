@@ -16,11 +16,10 @@ describe('GameBoardService', () => {
     });
     service = TestBed.inject(GameBoardService);
     httpTestingController = TestBed.get(HttpTestingController)
+
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-
 });

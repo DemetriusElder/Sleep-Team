@@ -1,7 +1,11 @@
 package SleepTeam.TicTacToe.Controller;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +15,7 @@ import SleepTeam.TicTacToe.Service.BoardService;
 
 
 @RestController()
+@CrossOrigin
 @RequestMapping("board")
 public class BoardController {
 	
@@ -22,13 +27,16 @@ public class BoardController {
 	}
 	
 	@GetMapping("/ai")
-	public Board getBoardVsAI(@RequestParam char XorO, @RequestParam Board board) {
-		return boardService.changeBoardStateAI(XorO, board);	
+	public Board getBoardVsAI(@RequestParam String XorO) {
+		return boardService.changeBoardStateAI(XorO);	
 	}
-	
+	@GetMapping("/reset")
+	public void getResetBoard() {
+		boardService.resetBoard();	
+	}
 	@GetMapping("/human")
-	public Board getBoardVsHuman(@RequestParam int row,@RequestParam int column,@RequestParam char XorO, @RequestParam Board board) {
-		return boardService.changeBoardStateHuman(XorO, row, column, board);
+	public Board getBoardVsHuman(@RequestParam int row,@RequestParam int column,@RequestParam String XorO) {
+		return boardService.changeBoardStateHuman(XorO, row, column);
 	}
 	@GetMapping()
 	public String test() {

@@ -1,13 +1,29 @@
-<p>scoreboarfd works!</p>
-<div class="main">
-    <div class="scoreboard-container">
+<mat-toolbar class="nav">
+    <div class="content-container">
+      <a routerLink="settings" routerLinkActive="active">
         <div class="left-container">
-            <h2>0</h2>
-            <h2>Player 1</h2>
+          <img class="settings-img" src="
+          ../../assets/settings_files/148386787-setting-icon-isolated-on-white-background-setting-vector-icon-cog-settings-icon-symbol-gear.jpg"
+          height="48px" width="48px">
+      </div>
+    </a>
+    <div class="center-container">
+      <!--<a routerLink="" routerLinkActive="active">-->
+        <div class="scoreboard">
+          <p>Player 1</p>
+          <div class="score">
+            <p>{{player1score}}</p>
+            <p>{{player2score}}</p>
+          </div>
+          <p>Player 2</p>
         </div>
+      <!--</a>-->
+    </div>
         <div class="right-container">
-            <h2>Player 2</h2>
-            <h2>0</h2>
+          <div class="dropdown" id="right-nav-stuff">
+            <img class="user-pic" alt="user login" src="../../../assets/user-pic.PNG" (click)="openLoginModal()"/>
+          </div>
         </div>
     </div>
-</div>
+  </mat-toolbar>
+  
