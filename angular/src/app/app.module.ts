@@ -32,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     HttpClientModule
   ],
-  providers: [GameSettingsComponent],
+  providers: [GameSettingsComponent,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

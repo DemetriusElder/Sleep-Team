@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 2beec1e0ebcbec8f5d84b15908ecc22aca78d058
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GameBoardService } from '../gameboard-service/gameboard.service';
@@ -26,10 +22,6 @@ describe('GameboardComponent', () => {
     fixture = TestBed.createComponent(GameboardComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(GameBoardService);
-<<<<<<< HEAD
-=======
-
->>>>>>> 2beec1e0ebcbec8f5d84b15908ecc22aca78d058
     fixture.detectChanges();
   });
 

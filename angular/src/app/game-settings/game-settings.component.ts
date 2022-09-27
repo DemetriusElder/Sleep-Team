@@ -27,7 +27,7 @@ export class GameSettingsComponent implements OnInit {
   onSubmit() {
       this.submitted = true;
       let mode = this.settingsForm.get('mode')!.value;
-      console.log(mode);
+     
       let player1char = this.settingsForm.get('player1')!.value;
       let first = this.settingsForm.get('first')!.value;
       this.gameboardService.newGame();
